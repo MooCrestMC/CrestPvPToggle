@@ -1,0 +1,7 @@
+name: CrestPvPToggle
+version: ${version}
+main: me.levitate.crestPvPToggle.CrestPvPToggle
+api-version: '1.13'
+authors: [Levitate]
+description: A plugin that allows players to toggle pvp.
+softdepend: [PlaceholderAPI]
