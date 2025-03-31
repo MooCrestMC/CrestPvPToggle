@@ -55,7 +55,7 @@ public class PlayerListener implements Listener {
         }
 
         // Add players to combat timer, preventing them from disabling pvp for a minute.
-        pvpManager.getInCombat().put(damager.getUniqueId(), true);
-        pvpManager.getInCombat().put(victim.getUniqueId(), true);
+        pvpManager.putInCombat(damager.getUniqueId());
+        pvpManager.putInCombat(victim.getUniqueId());
     }
 }

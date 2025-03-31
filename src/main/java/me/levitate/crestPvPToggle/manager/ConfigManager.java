@@ -13,10 +13,9 @@ import java.nio.file.Path;
 @Getter
 @Accessors(fluent = true)
 public class ConfigManager {
+    private final Path configDir;
     private Messages messages;
     private MainConfig config;
-
-    private final Path configDir;
 
     public ConfigManager(Plugin plugin) {
         configDir = plugin.getDataFolder().toPath();

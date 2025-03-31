@@ -1,6 +1,7 @@
 package me.levitate.crestPvPToggle;
 
 import co.aikar.commands.PaperCommandManager;
+import me.levitate.crestPvPToggle.api.CrestPvPToggleAPI;
 import me.levitate.crestPvPToggle.commands.MainCommand;
 import me.levitate.crestPvPToggle.listener.PlayerListener;
 import me.levitate.crestPvPToggle.manager.ConfigManager;
@@ -9,7 +10,6 @@ import me.levitate.hiveChat.HiveChat;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class CrestPvPToggle extends JavaPlugin {
-
     private PvPManager pvpManager;
 
     @Override
@@ -20,6 +20,9 @@ public final class CrestPvPToggle extends JavaPlugin {
         final PaperCommandManager commandManager = new PaperCommandManager(this);
         final ConfigManager configManager = new ConfigManager(this);
         this.pvpManager = new PvPManager(this);
+
+        // Initialize API with static access
+        CrestPvPToggleAPI.init(pvpManager);
 
         // Register listener
         new PlayerListener(this, pvpManager, configManager);
@@ -33,5 +36,4 @@ public final class CrestPvPToggle extends JavaPlugin {
         if (pvpManager != null)
             pvpManager.getStorage().save();
     }
-
 }
