@@ -6,6 +6,16 @@ plugins {
 group = "me.levitate"
 version = "1.0.0"
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
+tasks.withType<JavaCompile> {
+    options.release.set(17)
+}
+
 repositories {
     maven("https://repo.aikar.co/content/groups/aikar/")
     maven("https://repo.papermc.io/repository/maven-public/")

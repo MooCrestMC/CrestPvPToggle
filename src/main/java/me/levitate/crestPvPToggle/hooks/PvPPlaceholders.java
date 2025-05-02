@@ -4,7 +4,6 @@ import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import me.levitate.crestPvPToggle.api.CrestPvPToggleAPI;
 
 import org.bukkit.OfflinePlayer;
-import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 public class PvPPlaceholders extends PlaceholderExpansion {
