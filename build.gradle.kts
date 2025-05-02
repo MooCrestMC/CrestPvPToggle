@@ -9,6 +9,7 @@ version = "1.0.0"
 repositories {
     maven("https://repo.aikar.co/content/groups/aikar/")
     maven("https://repo.papermc.io/repository/maven-public/")
+    maven("https://repo.extendedclip.com/content/repositories/placeholderapi/")
     mavenCentral()
 }
 
@@ -21,6 +22,8 @@ dependencies {
     implementation("co.aikar:acf-paper:0.5.1-SNAPSHOT")
     implementation("de.exlll:configlib-paper:4.5.0")
     implementation(fileTree("libs"))
+
+    compileOnly("me.clip:placeholderapi:2.11.6")
 }
 
 tasks.shadowJar {
