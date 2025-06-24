@@ -6,11 +6,13 @@ import me.levitate.crestPvPToggle.models.PlayerData;
 import me.levitate.hiveChat.HiveChat;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.projectiles.ProjectileSource;
 
 import java.util.UUID;
 
@@ -38,8 +40,21 @@ public class PlayerListener implements Listener {
 
     @EventHandler
     public void onPlayerDamage(EntityDamageByEntityEvent event) {
-        if (!(event.getDamager() instanceof Player damager) ||
-                !(event.getEntity() instanceof Player victim))
+        if (!(event.getEntity() instanceof Player victim))
+            return;
+
+        Player damager = null;
+
+        if (event.getDamager() instanceof Player directDamager) {
+            damager = directDamager;
+        } else if (event.getDamager() instanceof Projectile projectile) {
+            ProjectileSource shooter = projectile.getShooter();
+            if (shooter instanceof Player playerShooter) {
+                damager = playerShooter;
+            }
+        }
+
+        if (damager == null)
             return;
 
         final World world = damager.getWorld();
